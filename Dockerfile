@@ -1,18 +1,12 @@
-# Use official Maven image with JDK 11
-FROM maven:3.9.6-eclipse-temurin-11 as builder
+FROM jenkins/jenkins:lts
 
-# Set working directory
-WORKDIR /build
+USER root
 
-# Copy all files
-COPY . .
+# Optional: install curl if needed
+RUN apt-get update && apt-get install -y curl
 
-# Build the Jenkins plugin, skipping tests for speed (optional)
-RUN mvn clean install -DskipTests
+# Switch back to jenkins user
+USER jenkins
 
-# Final image stage (optional if you want to run something)
-# FROM eclipse-temurin:11-jre as runtime
-# COPY --from=builder /build/target/ant.hpi /ant.hpi
-
-# Default command (optional if just for building)
-# CMD ["java", "-jar", "/ant.hpi"]
+# Install the unique-id plugin (replace with correct plugin ID if different)
+RUN jenkins-plugin-cli --plugins unique-id
