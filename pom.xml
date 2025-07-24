@@ -16,7 +16,7 @@
   <url>https://plugins.jenkins.io/ant</url>
 
   <scm>
-    <connection>scm:git:git://github.com/jenkinsci/ant-plugin.git</connection>
+    <connection>scm:git:https://github.com/jenkinsci/ant-plugin.git</connection>
     <developerConnection>scm:git:git@github.com:jenkinsci/ant-plugin.git</developerConnection>
     <url>https://github.com/jenkinsci/ant-plugin</url>
   </scm>
